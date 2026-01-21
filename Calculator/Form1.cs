@@ -22,23 +22,30 @@ namespace Calculator
 
         private void button7_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int value = 7;
+            int value = 3;
             string inputVal = textBox1.Text.Trim();
 
             string identifier = operators.FirstOrDefault(op => inputVal.Contains(op));
 
+            if (inputVal == "")
+            {
+                textBox1.Text = value.ToString();
+                return;
+            }
+
+            if (identifier == null)
+            {
+                textBox1.Text = inputVal + value.ToString();
+                return;
+            }
+
             var parts = inputVal.Split(new string[] { identifier }, StringSplitOptions.RemoveEmptyEntries);
-            int newValue = Convert.ToInt32(parts);
+            if (parts.Length < 2)
+            {
+                textBox1.Text = inputVal;
+                return;
+            }
+            int newValue = Convert.ToInt32(parts[0]);
             int result;
 
             switch (identifier)
@@ -48,34 +55,569 @@ namespace Calculator
                     textBox1.Text = result.ToString();
                     break;
                 case "-":
-                    // Handle subtraction
-                    break;
-                case "*":
-                    // Handle multiplication
-                    break;
-                case "/":
-                    // Handle division
-                    break;
-                default:
-                    int result = Convert.ToInt32(textBox1.Text) + value;
+                    result = newValue - value;
                     textBox1.Text = result.ToString();
                     break;
+                case "*":
+                    result = newValue * value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "/":
+                    if (value == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    result = newValue / value;
+                    textBox1.Text = result.ToString();
+                    break;
+                default:
+                    textBox1.Text = inputVal;
+                    break;
             }
-            
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            string identifier = operators.FirstOrDefault(op => textBox1.Text.Contains(op));
+            if(identifier == null ) textBox1.Text = textBox1.Text + "+";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int value = 7;
+            string inputVal = textBox1.Text.Trim();
+
+            string identifier = operators.FirstOrDefault(op => inputVal.Contains(op));
+
+            if (inputVal == "")
+            {
+                textBox1.Text = value.ToString();
+                return;
+            }
+
+            if (identifier == null)
+            {
+                textBox1.Text = inputVal + value.ToString();
+                return;
+            }
+
+            var parts = inputVal.Split(new string[] { identifier }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length < 2)
+            {
+                textBox1.Text = inputVal;
+                return;
+            }
+            int newValue = Convert.ToInt32(parts[0]);  
+            int result;
+
+            switch (identifier)
+            {
+                case "+":
+                    result = newValue + value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "-":
+                    result = newValue - value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "*":
+                    result = newValue * value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "/":
+                    if (value == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    result = newValue / value;  
+                    textBox1.Text = result.ToString();
+                    break;
+                default:
+                    textBox1.Text = inputVal;
+                    break;
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             int value = 8;
-            int result = Convert.ToInt32(textBox1.Text) + value;
-            textBox1.Text = result.ToString();
+            string inputVal = textBox1.Text.Trim();
+
+            string identifier = operators.FirstOrDefault(op => inputVal.Contains(op));
+
+            if (inputVal == "")
+            {
+                textBox1.Text = value.ToString();
+                return;
+            }
+
+            if (identifier == null)
+            {
+                textBox1.Text = inputVal + value.ToString();
+                return;
+            }
+
+            var parts = inputVal.Split(new string[] { identifier }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length < 2)
+            {
+                textBox1.Text = inputVal;
+                return;
+            }
+            int newValue = Convert.ToInt32(parts[0]);
+            int result;
+
+            switch (identifier)
+            {
+                case "+":
+                    result = newValue + value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "-":
+                    result = newValue - value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "*":
+                    result = newValue * value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "/":
+                    if (value == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    result = newValue / value;
+                    textBox1.Text = result.ToString();
+                    break;
+                default:
+                    textBox1.Text = inputVal;
+                    break;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             int value = 9;
-            int result = Convert.ToInt32(textBox1.Text) + value;
-            textBox1.Text = result.ToString();
+            string inputVal = textBox1.Text.Trim();
+
+            string identifier = operators.FirstOrDefault(op => inputVal.Contains(op));
+
+            if (inputVal == "")
+            {
+                textBox1.Text = value.ToString();
+                return;
+            }
+
+            if (identifier == null)
+            {
+                textBox1.Text = inputVal + value.ToString();
+                return;
+            }
+
+            var parts = inputVal.Split(new string[] { identifier }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length < 2)
+            {
+                textBox1.Text = inputVal;
+                return;
+            }
+            int newValue = Convert.ToInt32(parts[0]);
+            int result;
+
+            switch (identifier)
+            {
+                case "+":
+                    result = newValue + value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "-":
+                    result = newValue - value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "*":
+                    result = newValue * value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "/":
+                    if (value == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    result = newValue / value;
+                    textBox1.Text = result.ToString();
+                    break;
+                default:
+                    textBox1.Text = inputVal;
+                    break;
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            string identifier = operators.FirstOrDefault(op => textBox1.Text.Contains(op));
+            if (identifier == null) textBox1.Text = textBox1.Text + "-";
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            string identifier = operators.FirstOrDefault(op => textBox1.Text.Contains(op));
+            if (identifier == null) textBox1.Text = textBox1.Text + "*";
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            string identifier = operators.FirstOrDefault(op => textBox1.Text.Contains(op));
+            if (identifier == null) textBox1.Text = textBox1.Text + "/";
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int value = 4;
+            string inputVal = textBox1.Text.Trim();
+
+            string identifier = operators.FirstOrDefault(op => inputVal.Contains(op));
+
+            if (inputVal == "")
+            {
+                textBox1.Text = value.ToString();
+                return;
+            }
+
+            if (identifier == null)
+            {
+                textBox1.Text = inputVal + value.ToString();
+                return;
+            }
+
+            var parts = inputVal.Split(new string[] { identifier }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length < 2)
+            {
+                textBox1.Text = inputVal;
+                return;
+            }
+            int newValue = Convert.ToInt32(parts[0]);
+            int result;
+
+            switch (identifier)
+            {
+                case "+":
+                    result = newValue + value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "-":
+                    result = newValue - value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "*":
+                    result = newValue * value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "/":
+                    if (value == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    result = newValue / value;
+                    textBox1.Text = result.ToString();
+                    break;
+                default:
+                    textBox1.Text = inputVal;
+                    break;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int value = 5;
+            string inputVal = textBox1.Text.Trim();
+
+            string identifier = operators.FirstOrDefault(op => inputVal.Contains(op));
+
+            if (inputVal == "")
+            {
+                textBox1.Text = value.ToString();
+                return;
+            }
+
+            if (identifier == null)
+            {
+                textBox1.Text = inputVal + value.ToString();
+                return;
+            }
+
+            var parts = inputVal.Split(new string[] { identifier }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length < 2)
+            {
+                textBox1.Text = inputVal;
+                return;
+            }
+            int newValue = Convert.ToInt32(parts[0]);
+            int result;
+
+            switch (identifier)
+            {
+                case "+":
+                    result = newValue + value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "-":
+                    result = newValue - value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "*":
+                    result = newValue * value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "/":
+                    if (value == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    result = newValue / value;
+                    textBox1.Text = result.ToString();
+                    break;
+                default:
+                    textBox1.Text = inputVal;
+                    break;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int value = 6;
+            string inputVal = textBox1.Text.Trim();
+
+            string identifier = operators.FirstOrDefault(op => inputVal.Contains(op));
+
+            if (inputVal == "")
+            {
+                textBox1.Text = value.ToString();
+                return;
+            }
+
+            if (identifier == null)
+            {
+                textBox1.Text = inputVal + value.ToString();
+                return;
+            }
+
+            var parts = inputVal.Split(new string[] { identifier }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length < 2)
+            {
+                textBox1.Text = inputVal;
+                return;
+            }
+            int newValue = Convert.ToInt32(parts[0]);
+            int result;
+
+            switch (identifier)
+            {
+                case "+":
+                    result = newValue + value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "-":
+                    result = newValue - value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "*":
+                    result = newValue * value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "/":
+                    if (value == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    result = newValue / value;
+                    textBox1.Text = result.ToString();
+                    break;
+                default:
+                    textBox1.Text = inputVal;
+                    break;
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            int value = 1;
+            string inputVal = textBox1.Text.Trim();
+
+            string identifier = operators.FirstOrDefault(op => inputVal.Contains(op));
+
+            if (inputVal == "")
+            {
+                textBox1.Text = value.ToString();
+                return;
+            }
+
+            if (identifier == null)
+            {
+                textBox1.Text = inputVal + value.ToString();
+                return;
+            }
+
+            var parts = inputVal.Split(new string[] { identifier }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length < 2)
+            {
+                textBox1.Text = inputVal;
+                return;
+            }
+            int newValue = Convert.ToInt32(parts[0]);
+            int result;
+
+            switch (identifier)
+            {
+                case "+":
+                    result = newValue + value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "-":
+                    result = newValue - value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "*":
+                    result = newValue * value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "/":
+                    if (value == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    result = newValue / value;
+                    textBox1.Text = result.ToString();
+                    break;
+                default:
+                    textBox1.Text = inputVal;
+                    break;
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            int value = 2;
+            string inputVal = textBox1.Text.Trim();
+
+            string identifier = operators.FirstOrDefault(op => inputVal.Contains(op));
+
+            if (inputVal == "")
+            {
+                textBox1.Text = value.ToString();
+                return;
+            }
+
+            if (identifier == null)
+            {
+                textBox1.Text = inputVal + value.ToString();
+                return;
+            }
+
+            var parts = inputVal.Split(new string[] { identifier }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length < 2)
+            {
+                textBox1.Text = inputVal;
+                return;
+            }
+            int newValue = Convert.ToInt32(parts[0]);
+            int result;
+
+            switch (identifier)
+            {
+                case "+":
+                    result = newValue + value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "-":
+                    result = newValue - value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "*":
+                    result = newValue * value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "/":
+                    if (value == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    result = newValue / value;
+                    textBox1.Text = result.ToString();
+                    break;
+                default:
+                    textBox1.Text = inputVal;
+                    break;
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            int value = 0;
+            string inputVal = textBox1.Text.Trim();
+
+            string identifier = operators.FirstOrDefault(op => inputVal.Contains(op));
+
+            if (inputVal == "")
+            {
+                textBox1.Text = value.ToString();
+                return;
+            }
+
+            if (identifier == null)
+            {
+                textBox1.Text = inputVal + value.ToString();
+                return;
+            }
+
+            var parts = inputVal.Split(new string[] { identifier }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length < 2)
+            {
+                textBox1.Text = inputVal;
+                return;
+            }
+            int newValue = Convert.ToInt32(parts[0]);
+            int result;
+
+            switch (identifier)
+            {
+                case "+":
+                    result = newValue + value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "-":
+                    result = newValue - value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "*":
+                    result = newValue * value;
+                    textBox1.Text = result.ToString();
+                    break;
+                case "/":
+                    if (value == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    result = newValue / value;
+                    textBox1.Text = result.ToString();
+                    break;
+                default:
+                    textBox1.Text = inputVal;
+                    break;
+            }
         }
     }
 }
