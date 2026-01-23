@@ -17,6 +17,40 @@ namespace Calculator
             InitializeComponent();
         }
 
+        double firstValue;
+        string operation;
+        bool operationPressed = false;
+
+        private void button_click(object sender, EventArgs e)
+        {
+            //Screen clean - 1
+            if((textBox1.Text == "0") || (operationPressed))
+                textBox1.Clear();
+
+            operationPressed = false;
+
+            //কোন বাটন থেকে ক্লিক করা হয়েছে তা বোঝার জন্য আমরা sender ব্যবহার করি - 2
+            Button button = (Button)sender;
+
+            //দশমিক হেন্ডেল করা - 3
+            if (button.Text == ".")
+            {
+                //যদি আগে দশমিক থাকে সেটা চেক করা হবে -4
+                if (!textBox1.Text.Contains("."))
+                    textBox1.Text = textBox1.Text + button.Text;
+            }
+            else
+            {
+                textBox1.Text = textBox1.Text + button.Text;
+            }
+        }
+
+        private void operator_check(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            operation = button.Text;
+        }
+
         private List<string> operators = new List<string> { "+", "-", "/", "*" };
 
 
