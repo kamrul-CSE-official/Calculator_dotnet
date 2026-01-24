@@ -45,10 +45,65 @@ namespace Calculator
             }
         }
 
+        private void button10_Click(object sender, EventArgs e)
+        {
+            switch (operation)
+            {
+                case "+":
+                    textBox1.Text = (firstValue + Convert.ToDouble(textBox1.Text)).ToString();
+                    break;
+                case "-":
+                    textBox1.Text = (firstValue - Convert.ToDouble(textBox1.Text)).ToString();
+                    break;
+                case "*":
+                    textBox1.Text = (firstValue * Convert.ToDouble(textBox1.Text)).ToString();
+                    break;
+                case "/":
+                    if (Convert.ToDouble(textBox1.Text) == 0)
+                    {
+                        textBox1.Text = "Error: Division by zero";
+                        return;
+                    }
+                    textBox1.Text = (firstValue / Convert.ToDouble(textBox1.Text)).ToString();
+                    break;
+                default:
+                    break;
+
+            }
+
+            // ২. চেইন ক্যালকুলেশনের জন্য প্রস্তুতি
+            // রেজাল্ট বের হওয়ার পর সেই রেজাল্টটিকেই আবার resultValue তে রাখা হয়
+            // যাতে এরপর আবার কোনো যোগ-বিয়োগ করলে এই রেজাল্টের সাথে হয়।
+
+            Double temp;
+            if(Double.TryParse(textBox1.Text, out temp))
+            {
+                firstValue = temp;
+            }
+            else
+            {
+                firstValue = 0;
+            })
+
+        }
+
         private void operator_check(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            operation = button.Text;
+            if(firstValue != 0)
+            {
+                //(টানা অংকের জন্য)
+                button10_Click.PerformClick();
+                operation = button.Text;
+                operationPressed = true;
+
+            }
+            else
+            {
+                operation = button.Text;
+                firstValue = Convert.ToDouble(textBox1.Text);
+                operationPressed = true;
+            }
         }
 
         private List<string> operators = new List<string> { "+", "-", "/", "*" };
@@ -653,5 +708,7 @@ namespace Calculator
                     break;
             }
         }
+
+        
     }
 }
